@@ -28,7 +28,7 @@ export default function PhotosPage() {
       <h1>Lista de Fotos</h1>
       {error && <p style={{ color: 'red' }}>{error}</p>}
       <ul style={{ listStyle: 'none', padding: 0 }}>
-        {photos.slice(0, 50).map(photo => (  // limitando a 50 fotos para performance
+        {photos.slice(0, 50).map(photo => ( 
           <li key={photo.id} style={{ marginBottom: 20 }}>
             <strong>{photo.title}</strong><br />
             <img src={photo.thumbnailUrl} alt={photo.title} width={150} height={150} style={{ borderRadius: 8 }} />
