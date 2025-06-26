@@ -14,9 +14,18 @@ Inicie o servidor de desenvolvimento:
 
 npm run dev
 
+Resources
+JSONPlaceholder comes with a set of 6 common resources:
+
+/posts	Funcional
+/comments	Aqui mostra os comentarios
+/albums	Aqui está funcional aparecendo os albuns
+/photos	Funcional, porém não consegui colocar imagens, me falta experiência
+/todos	Funcional, consegue identificar os posts
+/users	Ver usuarios, está funcional
 
 Rotas do projeto
-Páginas React (Client/Server Components)
+Páginas React Components)
 Rota	Método	Descrição
 /posts	GET	Lista todos os posts
 /posts/[id]	GET	Visualiza um post específico
