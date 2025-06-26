@@ -1,52 +1,32 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { useSearchParams } from 'next/navigation';
 
 interface Comment {
   id: number;
   name: string;
   email: string;
   body: string;
-  postId: number;
 }
 
-export default function CommentsPage() {
-  const searchParams = useSearchParams();
-  const postId = searchParams.get('postId');
-
+export default function Post1CommentsPage() {
   const [comments, setComments] = useState<Comment[]>([]);
   const [error, setError] = useState<string | null>(null);
-  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    let url = 'https://jsonplaceholder.typicode.com/comments';
-    if (postId) {
-      url += `?postId=${postId}`;
-    }
-
-    setLoading(true);
-    fetch(url)
+    fetch('https://jsonplaceholder.typicode.com/posts/1/comments')
       .then(res => {
         if (!res.ok) throw new Error('Erro ao buscar comentários');
         return res.json();
       })
       .then(setComments)
-      .catch(err => setError(err.message))
-      .finally(() => setLoading(false));
-  }, [postId]);
+      .catch(err => setError(err.message));
+  }, []);
 
   return (
     <div style={{ padding: 20 }}>
-      <h1>
-        Comentários 
-      </h1>
-
-      {loading && <p>Carregando...</p>}
+      <h1>Comentários do Post 1</h1>
       {error && <p style={{ color: 'red' }}>{error}</p>}
-
-      {!loading && comments.length === 0 && <p>Nenhum comentário encontrado.</p>}
-
       <ul>
         {comments.map(comment => (
           <li key={comment.id} style={{ marginBottom: '1rem' }}>
